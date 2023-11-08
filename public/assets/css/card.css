@@ -1,0 +1,20 @@
+.card-person:hover {
+    transform: scale(1.03)
+}
+
+.text-clean{
+    color: rgb(185, 185, 185);
+}
+
+.transition-sm {
+    transition: .1s ease all;
+}
+
+.transition-sm:hover {
+    transform: scale(1.03)
+}
+
+.card-person {
+    transition: .1s ease all;
+}
+
