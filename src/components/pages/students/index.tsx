@@ -1,13 +1,13 @@
-import { useStudents } from "../../../hooks/useCrud";
+import { useStudents } from "../../../hooks/useStudents";
 import { HeadersStudents } from "../../../settings/students/headers";
 
 import Box from '../../common/box';
 import Button from '../../common/button';
 import Table from '../../common/table';
-import ModalDebts from './modals';
+import { StudentModal } from "./modals";
 
 export const Students = () => {
-    const { students, showModal, dataModalUtility, removeItem, showModalEdit, setShowModal,addNew } = useStudents()
+    const { students, showModal, dataModalUtility, removeItem, showModalEdit, setShowModal, addNew } = useStudents()
 
     return (
         <>
@@ -38,7 +38,7 @@ export const Students = () => {
                 </HeadersStudents>
             </Box>
             {showModal && (
-                <ModalDebts
+                <StudentModal
                     active={showModal}
                     setToggle={() => {
                         setShowModal(false)

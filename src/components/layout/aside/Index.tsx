@@ -2,8 +2,9 @@ import { NextRouter, useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { UIContext } from "../../../context";
 import { AsideOptionsI } from "../../../interfaces/layout/aside.interface";
-import { asideOptions } from "../../../settings/aside/aside-opts.settings";
+
 import Button from "../../common/button";
+import { asideOptions } from "../../../settings/aside/aside-opts.settings";
 
 const Aside = () => {
     const router: NextRouter = useRouter()

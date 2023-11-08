@@ -20,5 +20,4 @@ class AuthProvider extends Provider {
         return await this.post(`/change-password`, data)
     }
 }
-const authProvider = new AuthProvider()
-export default authProvider
+export default new AuthProvider()

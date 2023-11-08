@@ -1,97 +1,81 @@
 import { InputPropsI } from "../../interfaces/common/input/input.interface"
-import { statusOptions } from "../drops-downs-items/status.options"
-import { urgencyOptions } from "../drops-downs-items/urgency.options"
 
 interface EntriesDataI {
     form: any
-    errors: any
-    dropDowns: any
 }
 
-export const inputsDataDebtsModal = ({ form }: EntriesDataI): InputPropsI[] => {
+export const inputsDataStudent = ({ form }: EntriesDataI): InputPropsI[] => {
     return [
         {
-            title: "Name",
-            cols: "col-lg-6",
+            title: "Nombre",
+            cols: "col-lg-4",
             props: {
                 type: "text",
                 name: "name",
                 value: form?.name,
-                placeholder: "Your Name",
+                placeholder: "Ej. Matias",
             }
         },
-
         {
-            title: "Expense",
-            cols: "col-lg-6",
+            title: "Apellido",
+            cols: "col-lg-4",
             props: {
-                type: "number",
-                name: "expense",
-                value: form?.expense,
-                placeholder: "The expense here"
-            },
+                type: "text",
+                name: "lastName",
+                value: form?.lastName,
+                placeholder: "Ej. Castillo",
+            }
+        },
+        // birthday
+        {
+            title: "Matricula",
+            cols: "col-lg-4",
+            props: {
+                type: "text",
+                name: "student_code",
+                value: form?.student_code,
+                placeholder: "Ej. AW-500",
+            }
         },
         {
-            title: "Category",
+            title: "Nombre de la madre",
             cols: "col-lg-6",
             props: {
                 type: "text",
-                name: "category",
-                value: form?.category,
-                placeholder: "Your category"
-            },
+                name: "motherName",
+                value: form?.motherName,
+                placeholder: "Ej. Matilda Aguilar",
+            }
         },
         {
-            title: "Paid Out",
+            title: "Nombre del padre",
             cols: "col-lg-6",
-            props: {
-                type: "number",
-                name: "paidOut",
-                value: form?.paidOut,
-                placeholder: "Amount to pay"
-            },
-        },
-        {
-            title: "Status",
-            cols: "col-lg-6",
-            options: statusOptions,
-            props: {
-                type: "dropdown",
-                name: "status",
-                value: form?.status,
-            },
-        },
-
-        {
-            title: "Urgency",
-            cols: "col-lg-6",
-            options: urgencyOptions,
-            props: {
-                type: "dropdown",
-                name: "urgency",
-                value: form?.urgency,
-            },
-        },
-
-        {
-            title: "Description",
-            cols: "",
             props: {
                 type: "text",
-                name: "description",
-                value: form?.description,
-                placeholder: "Write a description"
-            },
+                name: "fatherName",
+                value: form?.fatherName,
+                placeholder: "Ej. Lucas Castillo",
+            }
         },
         {
-            title: "To whom",
-            cols: "",
+            title: "Dirección",
+            cols: "col-lg-12",
             props: {
                 type: "text",
-                name: "to",
-                value: form?.to,
-                placeholder: "E.g. To the neighbor"
-            },
+                name: "address",
+                value: form?.address,
+                placeholder: "Ej. C/ Juan Pablo Duarte, alto 40",
+            }
         },
+        // {
+        //     title: "Status",
+        //     cols: "col-lg-6",
+        //     options: statusOptions,
+        //     props: {
+        //         type: "dropdown",
+        //         name: "status",
+        //         value: form?.status,
+        //     },
+        // },
     ]
 }

@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import { ProfitI } from "../../app/profit/profit.interface";
 import { BgColorIconTypeCard } from "./card.type";
 interface CardBaseI {
     title: string
     description: string
 }
+
 export interface CardPropsI extends CardBaseI {
     amount?: string
     icon?: ReactNode
@@ -23,7 +23,7 @@ export interface CardImgPropsI extends CardBaseI {
 }
 export interface CardWidgetI extends CardBaseI {
     toggleEnabled: Function
-    item?: ProfitI
+    item?: any
     handleDelete: Function
     handleUpdate: Function
 }

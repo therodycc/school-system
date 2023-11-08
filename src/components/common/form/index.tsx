@@ -3,8 +3,9 @@ import formValidation from '../../../helpers/form/form-validation'
 import { inputFormToJSON } from '../../../helpers/form/form.helper'
 import useForm from '../../../hooks/useForm'
 import { InputPropsI } from '../../../interfaces/common/input/input.interface'
-import Dropdown from '../dropdown'
+
 import Input from '../input'
+import Dropdown from "../dropdown/Index"
 interface FormPropsI {
     inputsData: Function
     handleSubmit: Function
@@ -25,7 +26,7 @@ const Form = ({ inputsData, handleSubmit, footerSection, keyForm, initialState, 
             item.errorMessage = errors[item.props.name] ? errors[item.props.name][0] : "";
             return item;
         })
-    }, [form])
+    }, [dataRules, form, inputsData])
 
     const handleSubmitAction = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

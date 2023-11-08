@@ -18,9 +18,9 @@ class StudentProvider extends Provider {
         return await this.post('/', data)
     }
 
-    async remove(uuid: string) {
+    async remove(uuid: string | number) {
         return await this.delete(`/${uuid}`)
     }
 }
-const studentProvider = new StudentProvider()
-export default studentProvider
+
+export default new StudentProvider()

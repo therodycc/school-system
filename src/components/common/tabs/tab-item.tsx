@@ -6,7 +6,7 @@ const TabItem: FC<TabItemPropsI> = ({ action, icon, title, totalTabs }) => {
         <React.Fragment>
             <li
                 className={`nav-item cursor-pointer`}
-                onClick={() => action()}
+                onClick={() => action?.()}
                 style={{ width: 100 / totalTabs + "%", }}
             >
                 <a className="nav-link mb-0 px-0 py-1 ">

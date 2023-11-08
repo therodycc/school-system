@@ -22,5 +22,4 @@ class UserProvider extends Provider {
         return await this.delete(`/${id}`)
     }
 }
-const userProvider = new UserProvider()
-export default userProvider
+export default new UserProvider()
