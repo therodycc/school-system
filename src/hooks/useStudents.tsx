@@ -50,7 +50,6 @@ export const useStudents = () => {
         if (!confirm) return;
         const res = await studentProvider.remove(item.id!)
         if (res.error) return sweetAlert.alert("Error", res?.error?.message, "error");
-        // dispatch(removeDebt({ uuid: String(item?.id) }))
         sweetAlert.alert("Success", "Done!", "success");
     }, [])
 

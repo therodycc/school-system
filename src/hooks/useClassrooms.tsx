@@ -1,40 +1,39 @@
-import { useState, useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import sweetAlert from "../helpers/alerts/sweetAlert.helper";
-import { RootState } from "../redux-toolkit/store";
 import teacherProvider from "../providers/teacher/teacher.provider";
-import { TeacherI } from "../interfaces/teacher/teacher.interface";
+import { RootState } from "../redux-toolkit/store";
 
 
-export const useTeachers = () => {
+export const useClassrooms = () => {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
 
-    const teachers = useSelector((state: RootState) => [
+    const classrooms = useSelector((state: RootState) => [
         {
             id: 1,
-            name: "John",
-            lastName: "Doe",
-            profession: "Mathematics",
-            email: "john.doe@example.com",
+            name: "Room A",
+            capacity: 30,
+            location: "Building 1, Floor 2",
+            created_at: new Date("2023-11-07T09:00:00"),
         },
         {
             id: 2,
-            name: "Alice",
-            lastName: "Smith",
-            profession: "Science",
-            email: "alice.smith@example.com",
+            name: "Room B",
+            capacity: 25,
+            location: "Building 2, Floor 1",
+            created_at: new Date("2023-11-07T10:30:00"),
         },
         {
             id: 3,
-            name: "Bob",
-            lastName: "Johnson",
-            profession: "History",
-            email: "bob.johnson@example.com",
+            name: "Room C",
+            capacity: 40,
+            location: "Building 3, Floor 3",
+            created_at: new Date("2023-11-07T12:00:00"),
         },
     ])
 
-    const [dataModalUtility, setDataModalUtility] = useState<TeacherI | null>(null);
+    const [dataModalUtility, setDataModalUtility] = useState<ClassroomI | null>(null);
 
     const getData = useCallback(async () => {
     }, [])
@@ -43,7 +42,7 @@ export const useTeachers = () => {
         getData()
     }, [getData]);
 
-    const removeItem = useCallback(async (item: TeacherI) => {
+    const removeItem = useCallback(async (item: ClassroomI) => {
         const confirm = await sweetAlert.question("Are you sure?", "warning");
         if (!confirm) return;
         const res = await teacherProvider.remove(item.id!)
@@ -52,18 +51,18 @@ export const useTeachers = () => {
     }, [])
 
 
-    const showModalEdit = (item: TeacherI) => {
+    const showModalEdit = (item: ClassroomI) => {
         setDataModalUtility(item)
         setShowModal(!showModal)
     }
 
-    const addNew = (item: TeacherI) => {
+    const addNew = (item: ClassroomI) => {
         setShowModal(true);
         setDataModalUtility(null);
     }
 
     return {
-        teachers,
+        classrooms,
         removeItem,
         showModalEdit,
         dataModalUtility,

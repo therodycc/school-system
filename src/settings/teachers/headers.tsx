@@ -38,7 +38,7 @@ export const HeadersTeachers = <T extends {}>({ children, showModalEdit, removeI
         },
         {
             title: "Actions",
-            render: ({ item }: any) => {
+            render: ({ item }: { item: T }) => {
                 return (<CustomBtnGroups
                     onEdit={() => { showModalEdit(item) }}
                     onDelete={() => { removeItem(item); }} />);
