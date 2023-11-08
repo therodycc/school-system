@@ -26,4 +26,10 @@ export const asideOptions: AsideOptionsI[] = [
         active: false,
         link: "/classrooms",
     },
+    {
+        icon: faHouseFire,
+        title: "Materias",
+        active: false,
+        link: "/subjects",
+    },
 ]
