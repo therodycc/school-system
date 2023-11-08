@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-import accountReducer from '../slices/account/accounts.slice';
-
 // reducers
 import debtsReducer from '../slices/debts.slice';
-import fixedCostsReducer from '../slices/fixed-costs.slice';
+import fixedCostsReducer from '../slices/student/students.slice';
 import meReducer from '../slices/me.slice';
 
 const createNoopStorage = () => ({
@@ -32,8 +30,7 @@ const rootPersistConfig = {
 const rootReducer = combineReducers({
     debts: debtsReducer,
     me: meReducer,
-    fixedCosts: fixedCostsReducer,
-    account: accountReducer,
+    fixedCosts: fixedCostsReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

@@ -15,24 +15,6 @@ export const navOptionsRenders = ({ router, showBackButton }: { router: NextRout
             show: showBackButton,
             action: () => { router.back() }
         },
-        // {
-        //     icon: faBell,
-        //     active: false,
-        //     show: true,
-        //     action: () => { }
-        // },
-        // {
-        //     icon: faLanguage,
-        //     active: false,
-        //     show: true,
-        //     action: () => { }
-        // },
-        // {
-        //     icon: faCog,
-        //     active: false,
-        //     show: true,
-        //     action: () => { }
-        // },
     ]
 }
 
@@ -43,7 +25,6 @@ export const navAuth = [
         href: "/auth/sign-in",
         icon: "home",
         active: true,
-
     },
     {
         title: "Sign Up",
