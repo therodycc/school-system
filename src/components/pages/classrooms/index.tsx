@@ -20,13 +20,24 @@ export const Classrooms = () => {
         setClassroomSelected(null)
     }, [setClassroomSelected])
 
+    const removeAllUnassignedRooms = useCallback(() => {
+
+    }, [])
+
     return (
         <>
             <Box
-                customClassLeftSection='col-lg-8'
-                customClassRightSection='col-lg-4'
+                customClassRightSection='col-lg-6'
                 rightSection={<>
-                    <div className="">
+                    <div className="d-flex">
+                        <Button
+                            bgClass={"light"}
+                            type={"button"}
+                            loading={false}
+                            action={removeAllUnassignedRooms}
+                        >
+                            Eliminar aulas no asignadas
+                        </Button>
                         <Button
                             bgClass={"warning"}
                             type={"button"}
