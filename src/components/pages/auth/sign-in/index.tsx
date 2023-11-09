@@ -43,7 +43,7 @@ const SignIn = () => {
                                 footerSection={
                                     <>
                                         <Button
-                                            bgClass={"primary"}
+                                            bgClass={"warning"}
                                             type={"submit"}
                                             loading={loadingAuth}
                                             customClass="mt-3 w-100"

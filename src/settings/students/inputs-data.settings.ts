@@ -67,15 +67,5 @@ export const inputsDataStudent = ({ form }: EntriesDataI): InputPropsI[] => {
                 placeholder: "Ej. C/ Juan Pablo Duarte, alto 40",
             }
         },
-        // {
-        //     title: "Status",
-        //     cols: "col-lg-6",
-        //     options: statusOptions,
-        //     props: {
-        //         type: "dropdown",
-        //         name: "status",
-        //         value: form?.status,
-        //     },
-        // },
     ]
 }

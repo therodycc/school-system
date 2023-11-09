@@ -38,3 +38,27 @@ export const inputsDataClassrooms = ({ form }: EntriesDataI): InputPropsI[] => {
         },
     ]
 }
+
+export const inputsDataTeacherToClassroom = ({ form }: EntriesDataI): InputPropsI[] => {
+    return [
+        {
+            title: "",
+            cols: "col-lg-12",
+            options: [
+                { value: 'red', title: 'Red' },
+                { value: 'blue', title: 'Blue' },
+                { value: 'green', title: 'Green' },
+                { value: 'green', title: 'Green' },
+                { value: 'green', title: 'Green' },
+                { value: 'green', title: 'Green' },
+                { value: 'green', title: 'Green' },
+                { value: 'yellow', title: 'Yellow' },
+            ],
+            props: {
+                type: "dropdown",
+                name: "teacherId",
+                value: form?.teacherId,
+            },
+        },
+    ]
+}

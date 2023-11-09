@@ -1,4 +1,4 @@
-import { faEdit, faPlusCircle, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import React, { FC } from 'react'
 import ButtonGroup, { ButtonGroupI } from '../button/button-group'
 

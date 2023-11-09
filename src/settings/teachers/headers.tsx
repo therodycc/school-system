@@ -1,4 +1,3 @@
-import Image from "next/image";
 import CustomBtnGroups from "../../components/common/btn-actions-groups";
 
 interface HeadersTeacherI<T extends {}> {
@@ -43,7 +42,7 @@ export const HeadersTeachers = <T extends {}>({ children, showModalEdit, removeI
                     onEdit={() => { showModalEdit(item) }}
                     onDelete={() => { removeItem(item); }} />);
             },
-        },
+        }
     ]
 
     return children({ columns })

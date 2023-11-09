@@ -1,12 +1,14 @@
 import CustomBtnGroups from "../../components/common/btn-actions-groups";
+import Button from "../../components/common/button";
 
 interface HeadersClassroomsI<T extends {}> {
     children: ({ columns }: { columns: any }) => JSX.Element
     showModalEdit: (item: T) => void
     removeItem: (item: T) => void
+    assignTeacher: (item: T) => void
 }
 
-export const HeadersClassrooms = <T extends {}>({ children, showModalEdit, removeItem }: HeadersClassroomsI<T>) => {
+export const HeadersClassrooms = <T extends {}>({ children, showModalEdit, removeItem, assignTeacher }: HeadersClassroomsI<T>) => {
 
     const columns = [
         {
@@ -27,6 +29,20 @@ export const HeadersClassrooms = <T extends {}>({ children, showModalEdit, remov
                 return (<CustomBtnGroups
                     onEdit={() => { showModalEdit(item) }}
                     onDelete={() => { removeItem(item); }} />);
+            },
+        },
+        {
+            title: "Actions",
+            render: ({ item }: { item: T }) => {
+                return (<Button
+                    bgClass={"warning"}
+                    type={"button"}
+                    loading={false}
+                    action={() => assignTeacher(item)}
+                >
+                    Asignar profesor
+                </Button>
+                )
             },
         },
     ]
