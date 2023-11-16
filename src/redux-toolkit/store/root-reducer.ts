@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 // reducers
-import fixedCostsReducer from '../slices/student/students.slice';
 import meReducer from '../slices/me.slice';
+import studentReducer from '../slices/student/students.slice';
 
 const createNoopStorage = () => ({
     getItem() {
@@ -28,9 +28,10 @@ const rootPersistConfig = {
 
 const rootReducer = combineReducers({
     me: meReducer,
-    fixedCosts: fixedCostsReducer
+    student:studentReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export { rootReducer, rootPersistConfig };
+export { rootPersistConfig, rootReducer };
+

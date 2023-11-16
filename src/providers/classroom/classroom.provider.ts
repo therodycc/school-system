@@ -1,20 +1,20 @@
 import config from "../../config"
-import { TeacherI } from "../../interfaces/teacher/teacher.interface"
+import { ClassroomI } from "../../interfaces/classrooms/classrooms.interface"
 import Provider from "../provider"
 
-class TeacherProvider extends Provider {
+class ClassroomProvider extends Provider {
     constructor() {
-        super({ baseURL: `${config.app.url}/teacher` })
+        super({ baseURL: `${config.app.url}/classroom` })
     }
     async getAll() {
         return await this.get('/')
     }
 
-    async updateData(id: number, data: TeacherI) {
+    async updateData(id: number, data: ClassroomI) {
         return await this.patch(`/${id}`, data)
     }
 
-    async create(data: TeacherI) {
+    async create(data: ClassroomI) {
         return await this.post('/', data)
     }
 
@@ -23,4 +23,4 @@ class TeacherProvider extends Provider {
     }
 }
 
-export default new TeacherProvider()
+export default new ClassroomProvider()

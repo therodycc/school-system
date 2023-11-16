@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import sweetAlert from "../helpers/alerts/sweetAlert.helper";
 import teacherProvider from "../providers/teacher/teacher.provider";
 import { RootState } from "../redux-toolkit/store";
+import { ClassroomI } from "../interfaces/classrooms/classrooms.interface";
 
 
 export const useClassrooms = () => {

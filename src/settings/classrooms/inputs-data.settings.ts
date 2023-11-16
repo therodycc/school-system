@@ -45,14 +45,10 @@ export const inputsDataTeacherToClassroom = ({ form }: EntriesDataI): InputProps
             title: "",
             cols: "col-lg-12",
             options: [
-                { value: 'red', title: 'Red' },
-                { value: 'blue', title: 'Blue' },
-                { value: 'green', title: 'Green' },
-                { value: 'green', title: 'Green' },
-                { value: 'green', title: 'Green' },
-                { value: 'green', title: 'Green' },
-                { value: 'green', title: 'Green' },
-                { value: 'yellow', title: 'Yellow' },
+                { value: 'John Doe', title: 'John Doe' },
+                { value: 'John Doe', title: 'John Doe' },
+                { value: 'John Doe', title: 'John Doe' },
+                { value: 'John Doe', title: 'John Doe' },
             ],
             props: {
                 type: "dropdown",

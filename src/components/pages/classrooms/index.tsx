@@ -44,7 +44,7 @@ export const Classrooms = () => {
                             loading={false}
                             action={addNew}
                         >
-                            Add new
+                            Agregar nuevo
                         </Button>
                     </div>
                 </>}

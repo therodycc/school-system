@@ -1,4 +1,4 @@
-interface ClassroomI {
+export interface ClassroomI {
     id: number;
     name: string;
     capacity: number;

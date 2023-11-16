@@ -32,8 +32,8 @@ export const inputsDataStudent = ({ form }: EntriesDataI): InputPropsI[] => {
             cols: "col-lg-4",
             props: {
                 type: "text",
-                name: "student_code",
-                value: form?.student_code,
+                name: "studentCode",
+                value: form?.studentCode,
                 placeholder: "Ej. AW-500",
             }
         },

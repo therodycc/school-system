@@ -4,22 +4,22 @@ import Provider from "../provider"
 
 class StudentProvider extends Provider {
     constructor() {
-        super({ baseURL: `${config.app.url}/debts` })
+        super({ baseURL: `${config.app.url}/student` })
     }
     async getAll() {
         return await this.get('/')
     }
 
-    async update(uuid: string, data: any) {
-        return await this.patch(`/${uuid}`, data)
+    async updateData(id: number, data: StudentI) {
+        return await this.update(`/${id}`, data)
     }
 
     async create(data: StudentI) {
         return await this.post('/', data)
     }
 
-    async remove(uuid: string | number) {
-        return await this.delete(`/${uuid}`)
+    async remove(id: number) {
+        return await this.delete(`/${id}`)
     }
 }
 

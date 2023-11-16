@@ -5,10 +5,10 @@ class Provider {
 
     constructor(configInstance: AxiosRequestConfig<any>) {
         this.axios = axios.create({
-            withCredentials: true,
+            // withCredentials: true,
             headers: {
                 'Access-Control-Allow-Origin': "*",
-                'Access-Control-Allow-Credentials': "true",
+                'Access-Control-Allow-Credentials': "true"
             },
             ...configInstance
         });
@@ -27,7 +27,7 @@ class Provider {
     }
 
     protected update(endpoint: string, data: object = {}, config: AxiosRequestConfig = {}): Promise<any> {
-        return this.axios.patch(endpoint, data, config)
+        return this.axios.put(endpoint, data, config)
             .then(res => res.data)
             .catch(err => Promise.resolve(err?.response?.data));
     }
