@@ -1,46 +1,27 @@
-import { useState, useCallback, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useCallback, useEffect, useState } from "react";
+
 import sweetAlert from "../helpers/alerts/sweetAlert.helper";
-import { RootState } from "../redux-toolkit/store";
-import teacherProvider from "../providers/teacher/teacher.provider";
 import { SubjectI } from "../interfaces/subjects/subjects.interface";
+import { getAllSubject, removeSubject } from "../redux-toolkit/slices/subject/subject.actions";
+import { subjectSelector } from "../redux-toolkit/slices/subject/subject.selector";
+import { useDispatch, useSelector } from "../redux-toolkit/store";
 
 export const useSubjects = () => {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
-
-    const subjects = useSelector((state: RootState) => [
-        {
-            id: 1,
-            name: "Mathematics",
-        },
-        {
-            id: 2,
-            name: "Science",
-        },
-        {
-            id: 3,
-            name: "History",
-        },
-    ])
+    const subjects = useSelector(subjectSelector.getAllSubject)
 
     const [dataModalUtility, setDataModalUtility] = useState<SubjectI | null>(null);
 
-    const getData = useCallback(async () => {
-    }, [])
-
     useEffect(() => {
-        getData()
-    }, [getData]);
+        dispatch(getAllSubject())
+    }, [dispatch]);
 
     const removeItem = useCallback(async (item: SubjectI) => {
         const confirm = await sweetAlert.question("Are you sure?", "warning");
         if (!confirm) return;
-        const res = await teacherProvider.remove(item.id!)
-        if (res.error) return sweetAlert.alert("Error", res?.error?.message, "error");
-        sweetAlert.alert("Success", "Done!", "success");
-    }, [])
-
+        dispatch(removeSubject(item.id))
+    }, [dispatch])
 
     const showModalEdit = (item: SubjectI) => {
         setDataModalUtility(item)
@@ -51,6 +32,7 @@ export const useSubjects = () => {
         setShowModal(true);
         setDataModalUtility(null);
     }
+
 
     return {
         subjects,

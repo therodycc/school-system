@@ -1,4 +1,6 @@
 export interface SubjectI {
-    id: number;
-    name: string;
+    name:      string;
+    id:        number;
+    createdAt: string;
+    updatedAt: null;
 }
