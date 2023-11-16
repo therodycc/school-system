@@ -14,19 +14,22 @@ interface FormPropsI {
     keyForm?: string
     dataRules?: Function
     setLeaveForm?: Function
+    actions?: {
+        [key: string]: Function | string | boolean | Array<any> | number | any;
+    };
 }
 
-const Form = ({ inputsData, handleSubmit, footerSection, keyForm, initialState, dataRules, setLeaveForm }: FormPropsI) => {
+const Form = ({ inputsData, handleSubmit, footerSection, keyForm, initialState, dataRules, actions }: FormPropsI) => {
 
     const { form, handleChange, setForm } = useForm(initialState || {})
 
     let items = useMemo(() => {
-        const { errors } = formValidation(form, dataRules?.({ form }) || {});
-        return inputsData({ form }).map((item: any) => {
-            item.errorMessage = errors[item.props.name] ? errors[item.props.name][0] : "";
+        const { errors } = formValidation?.(form, dataRules?.({ form, actions }) || {});
+        return inputsData?.({ form, actions, handleChange, setForm })?.map((item: any) => {
+            item.errorMessage = errors?.[item?.props?.name] ? errors?.[item?.props?.name][0] : '';
             return item;
-        })
-    }, [dataRules, form, inputsData])
+        });
+    }, [actions, dataRules, form, handleChange, inputsData, setForm]);
 
     const handleSubmitAction = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
