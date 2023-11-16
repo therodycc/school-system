@@ -1,11 +1,27 @@
+import { TeacherI } from "../../../../interfaces/teacher/teacher.interface";
+import { updateTeacher, createTeacher } from "../../../../redux-toolkit/slices/teacher/teacher.actions";
+
+import { useDispatch } from "../../../../redux-toolkit/store";
 import { inputsDataTeacher } from "../../../../settings/teachers/inputs-data.settings";
 import Button from "../../../common/button";
 import Form from "../../../common/form";
 import Modal from "../../../common/modal";
 
-export const TeacherModal = ({ active, setToggle: toggle, data }: any) => {
-    const handleSubmit = (form: any) => {
-        console.log(`🪲 | ----->   form:`, form)
+interface Props {
+    active: boolean;
+    setToggle: () => void;
+    data: TeacherI | null;
+}
+
+export const TeacherModal = ({ active, setToggle: toggle, data }: Props) => {
+    const dispatch = useDispatch();
+
+    const handleSubmit = (form: TeacherI) => {
+        const payload: TeacherI = { ...data, ...form };
+
+        data
+            ? dispatch(updateTeacher(data.id, payload, toggle))
+            : dispatch(createTeacher(payload, toggle));
     };
 
     return (
@@ -28,7 +44,7 @@ export const TeacherModal = ({ active, setToggle: toggle, data }: any) => {
                                     type={"submit"}
                                     loading={false}
                                 >
-                                    Agregar
+                                    {data ? "Guardar" : "Agregar"}
                                 </Button>
                             </div>
                         </>

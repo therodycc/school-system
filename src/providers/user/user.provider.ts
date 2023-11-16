@@ -14,8 +14,8 @@ class UserProvider extends Provider {
         return await this.get('/')
     }
 
-    async update(id: string, data: any) {
-        return await this.patch(`/${id}`, data)
+    async updateData(id: string, data: any) {
+        return await this.update(`/${id}`, data)
     }
 
     async remove(id: string) {

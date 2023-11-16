@@ -3,6 +3,7 @@ import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 // reducers
 import meReducer from '../slices/me.slice';
 import studentReducer from '../slices/student/students.slice';
+import teacherReducer from '../slices/teacher/teacher.slice';
 
 const createNoopStorage = () => ({
     getItem() {
@@ -28,7 +29,8 @@ const rootPersistConfig = {
 
 const rootReducer = combineReducers({
     me: meReducer,
-    student:studentReducer
+    student:studentReducer,
+    teacher:teacherReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

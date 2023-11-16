@@ -11,7 +11,7 @@ class ClassroomProvider extends Provider {
     }
 
     async updateData(id: number, data: ClassroomI) {
-        return await this.patch(`/${id}`, data)
+        return await this.update(`/${id}`, data)
     }
 
     async create(data: ClassroomI) {

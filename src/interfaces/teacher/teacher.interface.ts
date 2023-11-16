@@ -1,7 +1,9 @@
 export interface TeacherI {
-    id: number;
-    name: string;
-    lastName: string;
+    name:       string;
+    lastName:   string;
     profession: string;
-    email: string;
+    email:      string;
+    id:         number;
+    createdAt:  string;
+    updatedAt:  null;
 }

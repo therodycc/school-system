@@ -11,7 +11,7 @@ class SubjectProvider extends Provider {
     }
 
     async updateData(id: number, data: SubjectI) {
-        return await this.patch(`/${id}`, data)
+        return await this.update(`/${id}`, data)
     }
 
     async create(data: SubjectI) {
