@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTeachers } from "../../../hooks/useTeachers";
 import { HeadersTeachers } from "../../../settings/teachers/headers";
 
@@ -8,10 +8,17 @@ import Button from '../../common/button';
 import Table from '../../common/table';
 import { TeacherModal } from './modals';
 import { AssignSubjects } from "./modals/assignSubjects";
+import { useDispatch } from "../../../redux-toolkit/store";
+import { getAllSubject } from "../../../redux-toolkit/slices/subject/subject.actions";
 
 export const Teachers = () => {
     const { teachers, showModal, dataModalUtility, removeItem, showModalEdit, setShowModal, addNew } = useTeachers()
     const [teacherSelected, setTeacherSelected] = useState<TeacherI | null>(null);
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(getAllSubject())
+    }, [dispatch]);
 
     const assignSubjects = useCallback((item: TeacherI) => {
         setTeacherSelected(item)

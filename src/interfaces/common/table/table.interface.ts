@@ -1,8 +1,8 @@
 import { ReactNode } from "react"
 
-export interface TablePropsI {
+export interface TablePropsI<T> {
     headItems: HeadItemsI[]
-    bodyItems: any[] | null
+    bodyItems: T[] | null | undefined
 }
 
 

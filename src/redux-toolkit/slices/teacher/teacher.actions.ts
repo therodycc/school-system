@@ -13,6 +13,16 @@ export const getAllTeacher = () => {
     }
 }
 
+export const getAllTeacherSubjectsAssigned = (teacherId: number) => {
+    return async (dispatch: Function) => {
+        const res = await teacherProvider.getAllSubjectsAssigned(teacherId)
+        if (!res) return sweetAlert.toast("Error", res?.error?.message, "error");
+        dispatch(setTeacherState({
+            subjects: res
+        }))
+    }
+}
+
 export const createTeacher = (teacher: TeacherI, successAction?: () => void) => {
     return async (dispatch: Function) => {
         const res = await teacherProvider.create(teacher)

@@ -6,8 +6,13 @@ class TeacherProvider extends Provider {
     constructor() {
         super({ baseURL: `${config.app.url}/teacher` })
     }
+
     async getAll() {
         return await this.get('/')
+    }
+
+    async getAllSubjectsAssigned(teacherId: number) {
+        return await this.get(`/subject/${teacherId}`)
     }
 
     async updateData(id: number, data: TeacherI) {

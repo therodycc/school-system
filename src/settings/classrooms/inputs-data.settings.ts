@@ -1,7 +1,11 @@
 import { InputPropsI } from "../../interfaces/common/input/input.interface"
+import { TeacherI } from "../../interfaces/teacher/teacher.interface"
 
 interface EntriesDataI {
     form: any
+    actions?: {
+        [key: string]: Function | string | boolean | Array<any> | number | any;
+    };
 }
 
 export const inputsDataClassrooms = ({ form }: EntriesDataI): InputPropsI[] => {
@@ -39,17 +43,14 @@ export const inputsDataClassrooms = ({ form }: EntriesDataI): InputPropsI[] => {
     ]
 }
 
-export const inputsDataTeacherToClassroom = ({ form }: EntriesDataI): InputPropsI[] => {
+const defaultValue = { value: undefined, title: "Seleccionar profesor" }
+
+export const inputsDataTeacherToClassroom = ({ form, actions }: EntriesDataI): InputPropsI[] => {
     return [
         {
             title: "",
             cols: "col-lg-12",
-            options: [
-                { value: 'John Doe', title: 'John Doe' },
-                { value: 'John Doe', title: 'John Doe' },
-                { value: 'John Doe', title: 'John Doe' },
-                { value: 'John Doe', title: 'John Doe' },
-            ],
+            options: [defaultValue, ...actions?.teachers?.map((teacher: TeacherI) => ({ value: teacher?.id, title: `${teacher?.name} ${teacher?.lastName}` }))],
             props: {
                 type: "dropdown",
                 name: "teacherId",

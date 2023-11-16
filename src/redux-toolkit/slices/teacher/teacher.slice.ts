@@ -1,12 +1,15 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { TeacherI } from "../../../interfaces/teacher/teacher.interface"
+import { SubjectI } from "../../../interfaces/subjects/subjects.interface"
 
 export interface TeacherStateI {
-    result: TeacherI[] | null
+    result?: TeacherI[] | null
+    subjects?: SubjectI[] | null
 }
 
 const teacherState: TeacherStateI = {
     result: null,
+    subjects: null
 }
 export const teacherSlice = createSlice({
     name: 'teacher',

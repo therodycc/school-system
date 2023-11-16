@@ -1,3 +1,5 @@
+import { teacherSelector } from "../../../../redux-toolkit/slices/teacher/teacher.selector";
+import { useDispatch, useSelector } from "../../../../redux-toolkit/store";
 import { inputsDataTeacherToClassroom } from "../../../../settings/classrooms/inputs-data.settings";
 import Button from "../../../common/button";
 import Form from "../../../common/form";
@@ -5,6 +7,8 @@ import Modal from "../../../common/modal";
 
 
 export const AssignTeacherToClassroom = ({ active, toggle, classroom }: any) => {
+    const dispatch = useDispatch()
+    const teachers = useSelector(teacherSelector.getAllTeachers)
 
     const handleSubmit = (form: any) => {
         console.log(`🪲 | ----->   form:`, form)
@@ -19,6 +23,9 @@ export const AssignTeacherToClassroom = ({ active, toggle, classroom }: any) => 
                     keyForm="teachers"
                     inputsData={inputsDataTeacherToClassroom}
                     handleSubmit={handleSubmit}
+                    actions={{
+                        teachers
+                    }}
                     footerSection={
                         <>
                             <div className="col-lg-12">

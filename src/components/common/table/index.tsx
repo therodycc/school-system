@@ -4,7 +4,7 @@ import LoadingTable from './loading-table';
 import TBody from './t-body';
 import THead from './t-head';
 
-const Table = ({ headItems, bodyItems }: TablePropsI) => {
+const Table = <T extends {}>({ headItems, bodyItems }: TablePropsI<T>) => {
     return (
         <>
             <table className="table align-items-center mb-0">
