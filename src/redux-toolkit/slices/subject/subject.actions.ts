@@ -17,7 +17,7 @@ export const getAllSubject = () => {
 export const createSubject = (subject: SubjectI, successAction?: () => void) => {
     return async (dispatch: Function) => {
         const res = await subjectProvider.create(subject)
-        if (!res) return sweetAlert.alert("Error", "Error creando maestro", "error");
+        if (!res) return sweetAlert.alert("Error", "Error creando materia", "error");
         sweetAlert.alert("Success", "Done!", "success");
         successAction?.()
         dispatch(getAllSubject())
@@ -27,7 +27,7 @@ export const createSubject = (subject: SubjectI, successAction?: () => void) => 
 export const updateSubject = (id: number, data: SubjectI, successAction?: () => void) => {
     return async (dispatch: Function) => {
         const res = await subjectProvider.updateData(id, data)
-        if (!res) return sweetAlert.alert("Error", "Error actualizando maestro", "error");
+        if (!res) return sweetAlert.alert("Error", "Error actualizando materia", "error");
         sweetAlert.alert("Success", "Done!", "success");
         successAction?.()
         dispatch(getAllSubject())
@@ -37,7 +37,7 @@ export const updateSubject = (id: number, data: SubjectI, successAction?: () => 
 export const removeSubject = (id: number) => {
     return async (dispatch: Function) => {
         const res = await subjectProvider.remove(id)
-        if (!res) return sweetAlert.alert("Error", "Error borrando maestro", "error");
+        if (!res) return sweetAlert.alert("Error", "Error borrando materia", "error");
         sweetAlert.alert("Success", "Done!", "success");
         dispatch(getAllSubject())
     }

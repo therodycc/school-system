@@ -5,6 +5,7 @@ import meReducer from '../slices/me.slice';
 import studentReducer from '../slices/student/students.slice';
 import teacherReducer from '../slices/teacher/teacher.slice';
 import subjectReducer from '../slices/subject/subject.slice';
+import classroomReducer from '../slices/classroom/classroom.slice';
 
 const createNoopStorage = () => ({
     getItem() {
@@ -32,7 +33,8 @@ const rootReducer = combineReducers({
     me: meReducer,
     student:studentReducer,
     teacher:teacherReducer,
-    subject:subjectReducer
+    subject:subjectReducer,
+    classroom:classroomReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

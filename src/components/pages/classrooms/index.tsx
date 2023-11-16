@@ -7,6 +7,7 @@ import Button from '../../common/button';
 import Table from '../../common/table';
 import { ClassroomsModal } from "./modals";
 import { AssignTeacherToClassroom } from "./modals/assignClassroomsToTeacher";
+import { ClassroomI } from "../../../interfaces/classrooms/classrooms.interface";
 
 export const Classrooms = () => {
     const { classrooms, showModal, dataModalUtility, removeItem, showModalEdit, setShowModal, addNew } = useClassrooms()

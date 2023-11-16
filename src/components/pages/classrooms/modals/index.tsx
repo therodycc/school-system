@@ -1,11 +1,27 @@
+import { ClassroomI } from "../../../../interfaces/classrooms/classrooms.interface";
+import { createClassroom, updateClassroom } from "../../../../redux-toolkit/slices/classroom/classroom.actions";
+import { useDispatch } from "../../../../redux-toolkit/store";
 import { inputsDataClassrooms } from "../../../../settings/classrooms/inputs-data.settings";
 import Button from "../../../common/button";
 import Form from "../../../common/form";
 import Modal from "../../../common/modal";
 
-export const ClassroomsModal = ({ active, setToggle: toggle, data }: any) => {
-    const handleSubmit = (form: any) => {
-        console.log(`🪲 | ----->   form:`, form)
+interface Props {
+    active: boolean;
+    setToggle: () => void;
+    data: ClassroomI | null;
+}
+
+
+export const ClassroomsModal = ({ active, setToggle: toggle, data }: Props) => {
+    const dispatch = useDispatch();
+
+    const handleSubmit = (form: ClassroomI) => {
+        const payload: ClassroomI = { ...data, ...form };
+
+        data
+            ? dispatch(updateClassroom(data.id, payload, toggle))
+            : dispatch(createClassroom(payload, toggle));
     };
 
     return (
@@ -28,7 +44,7 @@ export const ClassroomsModal = ({ active, setToggle: toggle, data }: any) => {
                                     type={"submit"}
                                     loading={false}
                                 >
-                                    Agregar
+                                    {data ? "Guardar" : "Agregar"}
                                 </Button>
                             </div>
                         </>
