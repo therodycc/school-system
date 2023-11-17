@@ -11,8 +11,16 @@ class TeacherProvider extends Provider {
         return await this.get('/')
     }
 
+    async getOne(teacherId: number) {
+        return await this.get(`/${teacherId}`)
+    }
+
     async getAllSubjectsAssigned(teacherId: number) {
         return await this.get(`/subject/${teacherId}`)
+    }
+
+    async assignSubjectsTeacher(teacherId: number, subjects: { subjectId: number }[]) {
+        return await this.update(`/${teacherId}/subjects`, subjects)
     }
 
     async updateData(id: number, data: TeacherI) {

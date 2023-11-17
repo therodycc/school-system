@@ -1,14 +1,15 @@
 import CustomBtnGroups from "../../components/common/btn-actions-groups";
 import Button from "../../components/common/button";
+import { TeacherI } from "../../interfaces/teacher/teacher.interface";
 
-interface HeadersTeacherI<T extends {}> {
+interface HeadersTeacherI {
     children: ({ columns }: { columns: any }) => JSX.Element
-    showModalEdit: (item: T) => void
-    removeItem: (item: T) => void
-    assignSubjects: (item: T) => void
+    showModalEdit: (item: TeacherI) => void
+    removeItem: (item: TeacherI) => void
+    assignSubjects: (item: TeacherI) => void
 }
 
-export const HeadersTeachers = <T extends {}>({ children, showModalEdit, removeItem, assignSubjects }: HeadersTeacherI<T>) => {
+export const HeadersTeachers = ({ children, showModalEdit, removeItem, assignSubjects }: HeadersTeacherI) => {
 
     const columns = [
         {
@@ -39,7 +40,7 @@ export const HeadersTeachers = <T extends {}>({ children, showModalEdit, removeI
         },
         {
             title: "Actions",
-            render: ({ item }: { item: T }) => {
+            render: ({ item }: { item: TeacherI }) => {
                 return (<CustomBtnGroups
                     onEdit={() => { showModalEdit(item) }}
                     onDelete={() => { removeItem(item); }} />);
@@ -47,16 +48,16 @@ export const HeadersTeachers = <T extends {}>({ children, showModalEdit, removeI
         },
         {
             title: "Actions",
-            render: ({ item }: { item: T }) => {
-                return (<Button
+            render: ({ item }: { item: TeacherI }) => {
+                return <Button
                     bgClass={"warning"}
                     type={"button"}
                     loading={false}
                     action={() => assignSubjects(item)}
                 >
-                    Asignar materias
+                    {true ? "Asignar materias" : "Modificar materias"}
                 </Button>
-                )
+
             },
         },
     ]

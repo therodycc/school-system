@@ -11,11 +11,11 @@ export const SubjectModal = ({ active, setToggle: toggle, data }: any) => {
 
     const handleSubmit = (form: SubjectI) => {
         const payload: SubjectI = { ...data, ...form };
-
         data
             ? dispatch(updateSubject(data.id, payload, toggle))
             : dispatch(createSubject(payload, toggle));
     };
+
     return (
         <>
             <Modal title="Materias" active={active} setToggle={toggle} modalStylesContainer={{

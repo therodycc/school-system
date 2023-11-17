@@ -1,3 +1,5 @@
+import { ClassroomI } from "../../../../interfaces/classrooms/classrooms.interface";
+import { assignTeacherToClassroom } from "../../../../redux-toolkit/slices/classroom/classroom.actions";
 import { teacherSelector } from "../../../../redux-toolkit/slices/teacher/teacher.selector";
 import { useDispatch, useSelector } from "../../../../redux-toolkit/store";
 import { inputsDataTeacherToClassroom } from "../../../../settings/classrooms/inputs-data.settings";
@@ -5,13 +7,18 @@ import Button from "../../../common/button";
 import Form from "../../../common/form";
 import Modal from "../../../common/modal";
 
+interface Props {
+    active: boolean;
+    toggle: () => void;
+    data: ClassroomI;
+}
 
-export const AssignTeacherToClassroom = ({ active, toggle, classroom }: any) => {
+export const AssignTeacherToClassroom = ({ active, toggle, data }: Props) => {
     const dispatch = useDispatch()
     const teachers = useSelector(teacherSelector.getAllTeachers)
 
-    const handleSubmit = (form: any) => {
-        console.log(`🪲 | ----->   form:`, form)
+    const handleSubmit = (form: { teacherId: number }) => {
+        dispatch(assignTeacherToClassroom(data.id, form.teacherId, toggle))
     };
 
     return (
@@ -21,6 +28,11 @@ export const AssignTeacherToClassroom = ({ active, toggle, classroom }: any) => 
             }}>
                 <Form
                     keyForm="teachers"
+                    {...data?.teacherId && {
+                        initialState: {
+                            teacherId: data.teacherId
+                        }
+                    }}
                     inputsData={inputsDataTeacherToClassroom}
                     handleSubmit={handleSubmit}
                     actions={{

@@ -1,14 +1,14 @@
 import React from 'react';
 import { ButtonPropsI } from '../../../interfaces/common/button/button.interface';
 
-const Button = ({ children, action, bgClass, size, type, loading, customClass }: ButtonPropsI) => {
+const Button = ({ children, action, bgClass, size, type, loading, customClass, disabled }: ButtonPropsI) => {
     return (
         <>
             <button
                 onClick={() => action?.()}
                 type={type}
                 className={`btn btn-${bgClass} btn-${size && (size || '')} mx-1 ${customClass}`}
-                disabled={loading}
+                disabled={loading || !!disabled}
             >
                 {
                     loading ?

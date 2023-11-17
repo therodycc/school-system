@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useClassrooms } from "../../../hooks/useClassrooms";
 import { HeadersClassrooms } from "../../../settings/classrooms/headers";
 
@@ -8,10 +8,17 @@ import Table from '../../common/table';
 import { ClassroomsModal } from "./modals";
 import { AssignTeacherToClassroom } from "./modals/assignClassroomsToTeacher";
 import { ClassroomI } from "../../../interfaces/classrooms/classrooms.interface";
+import { getAllTeacher } from "../../../redux-toolkit/slices/teacher/teacher.actions";
+import { useDispatch } from "../../../redux-toolkit/store";
 
 export const Classrooms = () => {
+    const dispatch = useDispatch()
     const { classrooms, showModal, dataModalUtility, removeItem, showModalEdit, setShowModal, addNew } = useClassrooms()
     const [classroomSelected, setClassroomSelected] = useState<ClassroomI | null>(null);
+    
+    useEffect(() => {
+        dispatch(getAllTeacher())
+    }, [dispatch]);
 
     const assignTeacher = useCallback((item: ClassroomI) => {
         setClassroomSelected(item)
@@ -73,7 +80,7 @@ export const Classrooms = () => {
                 <AssignTeacherToClassroom
                     active={!!classroomSelected}
                     toggle={closeModal}
-                    classroom={classroomSelected} />
+                    data={classroomSelected} />
             )}
         </>
     );

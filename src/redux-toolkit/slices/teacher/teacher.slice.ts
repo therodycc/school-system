@@ -5,12 +5,15 @@ import { SubjectI } from "../../../interfaces/subjects/subjects.interface"
 export interface TeacherStateI {
     result?: TeacherI[] | null
     subjects?: SubjectI[] | null
+    teacherSelected?: SubjectI | null
 }
 
 const teacherState: TeacherStateI = {
     result: null,
-    subjects: null
+    subjects: null,
+    teacherSelected: null
 }
+
 export const teacherSlice = createSlice({
     name: 'teacher',
     initialState: teacherState,

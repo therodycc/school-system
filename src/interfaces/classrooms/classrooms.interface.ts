@@ -4,4 +4,5 @@ export interface ClassroomI {
     capacity: number;
     location: string;
     created_at: Date;
+    teacherId?: number
 }

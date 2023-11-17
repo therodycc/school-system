@@ -11,6 +11,7 @@ export interface ButtonPropsI {
     type: typeButtonType
     customClass?: string
     loading: boolean
+    disabled?:boolean
 }
 
 export interface ButtonCircleIconPropsI {

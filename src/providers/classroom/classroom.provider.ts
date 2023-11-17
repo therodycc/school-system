@@ -10,6 +10,9 @@ class ClassroomProvider extends Provider {
         return await this.get('/')
     }
 
+    async assignTeacher(classroomId: number, teacherId: number) {
+        return await this.update(`/${classroomId}/teacher`, { teacherId })
+    }
     async updateData(id: number, data: ClassroomI) {
         return await this.update(`/${id}`, data)
     }

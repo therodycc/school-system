@@ -6,10 +6,19 @@ import { setClassroomState } from "./classroom.slice";
 export const getAllClassroom = () => {
     return async (dispatch: Function) => {
         const res = await classroomProvider.getAll()
-        if (!res) return sweetAlert.toast("Error", res?.error?.message, "error");
+        if (!res) return sweetAlert.toast("Error", "", "error");
         dispatch(setClassroomState({
             result: res
         }))
+    }
+}
+
+export const assignTeacherToClassroom = (classroomId: number, teacherId: number, successAction?: () => void) => {
+    return async (dispatch: Function) => {
+        const res = await classroomProvider.assignTeacher(classroomId, teacherId)
+        if (!res) return sweetAlert.toast("Error", "", "error");
+        dispatch(getAllClassroom())
+        successAction?.()
     }
 }
 

@@ -50,7 +50,7 @@ export const inputsDataTeacherToClassroom = ({ form, actions }: EntriesDataI): I
         {
             title: "",
             cols: "col-lg-12",
-            options: [defaultValue, ...actions?.teachers?.map((teacher: TeacherI) => ({ value: teacher?.id, title: `${teacher?.name} ${teacher?.lastName}` }))],
+            options: [defaultValue, ...(actions?.teachers?.map((teacher: TeacherI) => ({ value: teacher?.id, title: `${teacher?.name} ${teacher?.lastName}` })) || [])],
             props: {
                 type: "dropdown",
                 name: "teacherId",

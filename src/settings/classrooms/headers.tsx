@@ -1,14 +1,17 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CustomBtnGroups from "../../components/common/btn-actions-groups";
 import Button from "../../components/common/button";
+import { ClassroomI } from "../../interfaces/classrooms/classrooms.interface";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-interface HeadersClassroomsI<T extends {}> {
+interface HeadersClassroomsI {
     children: ({ columns }: { columns: any }) => JSX.Element
-    showModalEdit: (item: T) => void
-    removeItem: (item: T) => void
-    assignTeacher: (item: T) => void
+    showModalEdit: (item: ClassroomI) => void
+    removeItem: (item: ClassroomI) => void
+    assignTeacher: (item: ClassroomI) => void
 }
 
-export const HeadersClassrooms = <T extends {}>({ children, showModalEdit, removeItem, assignTeacher }: HeadersClassroomsI<T>) => {
+export const HeadersClassrooms = ({ children, showModalEdit, removeItem, assignTeacher }: HeadersClassroomsI) => {
 
     const columns = [
         {
@@ -25,7 +28,7 @@ export const HeadersClassrooms = <T extends {}>({ children, showModalEdit, remov
         },
         {
             title: "Actions",
-            render: ({ item }: { item: T }) => {
+            render: ({ item }: { item: ClassroomI }) => {
                 return (<CustomBtnGroups
                     onEdit={() => { showModalEdit(item) }}
                     onDelete={() => { removeItem(item); }} />);
@@ -33,8 +36,26 @@ export const HeadersClassrooms = <T extends {}>({ children, showModalEdit, remov
         },
         {
             title: "Actions",
-            render: ({ item }: { item: T }) => {
-                return (<Button
+            render: ({ item }: { item: ClassroomI }) => {
+                return item?.teacherId ? (<>
+                    <Button
+                        bgClass={"success"}
+                        type={"button"}
+                        loading={false}
+                        disabled={true}
+                        customClass="text-light font-weight-bold"
+                    >
+                        Profesor asignado
+                    </Button>
+                    <Button
+                        bgClass={"light"}
+                        type={"button"}
+                        loading={false}
+                        action={() => assignTeacher(item)}
+                    >
+                        <FontAwesomeIcon icon={faEdit} />
+                    </Button>
+                </>) : (<Button
                     bgClass={"warning"}
                     type={"button"}
                     loading={false}

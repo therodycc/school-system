@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { TeacherI } from "../../../../interfaces/teacher/teacher.interface";
 import { subjectSelector } from "../../../../redux-toolkit/slices/subject/subject.selector";
-import { getAllTeacherSubjectsAssigned } from "../../../../redux-toolkit/slices/teacher/teacher.actions";
+import { assignSubjectsTeacher, getAllTeacherSubjectsAssigned } from "../../../../redux-toolkit/slices/teacher/teacher.actions";
 import { teacherSelector } from "../../../../redux-toolkit/slices/teacher/teacher.selector";
 import { useDispatch } from "../../../../redux-toolkit/store";
 import Button from "../../../common/button";
@@ -39,8 +39,7 @@ export const AssignSubjects = ({ active, setToggle: toggle, data }: Props) => {
 
     const handleSubmit = () => {
         const activeSubjects = subjects.filter(x => x.active).map(sub => ({ subjectId: sub.id }))
-        const payload = { teacherId: data.id, activeSubjects }
-        console.log(`🪲 | ----->   payload:`, payload)
+        dispatch(assignSubjectsTeacher(data.id, activeSubjects, toggle))
     };
 
     const handleActive = (item: any) => {
