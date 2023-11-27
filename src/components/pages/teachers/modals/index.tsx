@@ -2,7 +2,7 @@ import { TeacherI } from "../../../../interfaces/teacher/teacher.interface";
 import { updateTeacher, createTeacher } from "../../../../redux-toolkit/slices/teacher/teacher.actions";
 
 import { useDispatch } from "../../../../redux-toolkit/store";
-import { inputsDataTeacher } from "../../../../settings/teachers/inputs-data.settings";
+import { inputsDataTeacher, inputsHeadersTeacherRules } from "../../../../settings/teachers/inputs-data.settings";
 import Button from "../../../common/button";
 import Form from "../../../common/form";
 import Modal from "../../../common/modal";
@@ -33,6 +33,7 @@ export const TeacherModal = ({ active, setToggle: toggle, data }: Props) => {
                     keyForm="teachers"
                     inputsData={inputsDataTeacher}
                     handleSubmit={handleSubmit}
+                    dataRules={inputsHeadersTeacherRules}
                     initialState={data}
                     footerSection={
                         <>

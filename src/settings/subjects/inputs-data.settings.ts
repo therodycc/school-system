@@ -18,3 +18,11 @@ export const inputsDataSubjects = ({ form }: EntriesDataI): InputPropsI[] => {
         },
     ]
 }
+
+export const inputsHeadersSubjectsRules = () => {
+    return {
+        name: {
+            isRequired: { message: "Requerido" },
+        },
+    }
+}

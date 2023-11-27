@@ -3,7 +3,7 @@ import Provider from "../provider"
 
 class UserProvider extends Provider {
     constructor() {
-        super({ baseURL: `${config.app.url}/users` })
+        super({ baseURL: `${config.app.url}/user` })
     }
 
     async getMe() {

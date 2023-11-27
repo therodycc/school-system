@@ -1,7 +1,7 @@
 import { SubjectI } from "../../../../interfaces/subjects/subjects.interface";
 import { createSubject, updateSubject } from "../../../../redux-toolkit/slices/subject/subject.actions";
 import { useDispatch } from "../../../../redux-toolkit/store";
-import { inputsDataSubjects } from "../../../../settings/subjects/inputs-data.settings";
+import { inputsDataSubjects, inputsHeadersSubjectsRules } from "../../../../settings/subjects/inputs-data.settings";
 import Button from "../../../common/button";
 import Form from "../../../common/form";
 import Modal from "../../../common/modal";
@@ -25,6 +25,7 @@ export const SubjectModal = ({ active, setToggle: toggle, data }: any) => {
                     keyForm="subjects"
                     inputsData={inputsDataSubjects}
                     handleSubmit={handleSubmit}
+                    dataRules={inputsHeadersSubjectsRules}
                     initialState={data}
                     footerSection={
                         <>

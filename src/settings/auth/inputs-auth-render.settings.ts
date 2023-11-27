@@ -28,10 +28,11 @@ export const inputsAuthRenderSettings = (form: any): InputPropsI[] => {
 export const inputsAuthRenderRules = () => {
     return {
         email: {
-            isRequired: { message: "The Email is required" },
+            isRequired: { message: "Requerido" },
+            isEmailValid: { message: "Correo invalido" },
         },
         password: {
-            isRequired: { message: "The Password is required" },
+            isRequired: { message: "Requerido" },
         },
     }
 }

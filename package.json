@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "db:json": "json-server --watch api/reports.json --port 8000",
+    "dev": "HTTPS=true SSL_CRT_FILE=./.cert/key.pem SSL_KEY_FILE=./.cert/cert.pem next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -17,11 +16,13 @@
     "@reduxjs/toolkit": "^1.9.1",
     "animate.css": "^4.1.1",
     "axios": "^0.26.0",
+    "chart.js": "^4.4.0",
     "dotenv": "^16.0.0",
     "json-server": "^0.17.0",
     "jspdf": "^2.5.1",
     "next": "12.1.0",
     "react": "17.0.2",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "17.0.2",
     "react-redux": "^8.0.5",
     "redux-persist": "^6.0.0",

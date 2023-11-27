@@ -1,5 +1,5 @@
 import { StudentI } from "../../../../interfaces/student/student.interface";
-import { inputsDataStudent } from "../../../../settings/students/inputs-data.settings";
+import { inputsDataStudent, inputsHeadersStudentsRules } from "../../../../settings/students/inputs-data.settings";
 import Button from "../../../common/button";
 import Form from "../../../common/form";
 import Modal from "../../../common/modal";
@@ -19,8 +19,13 @@ export const StudentModal = ({ active, setToggle: toggle, data }: Props) => {
     const dispatch = useDispatch();
 
     const handleSubmit = (form: StudentI) => {
-        const payload: StudentI = { ...data, ...form };
-
+        const payload: StudentI = {
+            ...data,
+            ...form,
+            ...((form?.birthday || data?.birthday) && {
+                birthday: new Date(form.birthday || data!.birthday).toISOString()
+            })
+        };
         data
             ? dispatch(updateStudent(data.id, payload, toggle))
             : dispatch(createStudent(payload, toggle));
@@ -37,9 +42,10 @@ export const StudentModal = ({ active, setToggle: toggle, data }: Props) => {
                 }}
             >
                 <Form
-                    keyForm="debts"
+                    keyForm="students"
                     inputsData={inputsDataStudent}
                     handleSubmit={handleSubmit}
+                    dataRules={inputsHeadersStudentsRules}
                     initialState={data}
                     footerSection={
                         <>

@@ -1,28 +1,20 @@
 import router from "next/router";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import sweetAlert from "../../../../helpers/alerts/sweetAlert.helper";
-import authProvider from "../../../../providers/auth/auth.provider";
-
+import { AuthLoginPayload } from "../../../../interfaces/auth/auth.interface";
+import { signIn } from "../../../../redux-toolkit/slices/auth/auth.actions";
+import { useDispatch, useSelector } from "../../../../redux-toolkit/store";
+import inputsAuthRenderSettings, { inputsAuthRenderRules } from "../../../../settings/auth/inputs-auth-render.settings";
 import Button from "../../../common/button";
 import Form from "../../../common/form";
-import inputsAuthRenderSettings, { inputsAuthRenderRules } from "../../../../settings/auth/inputs-auth-render.settings";
+import { authSelector } from "../../../../redux-toolkit/slices/auth/auth.selector";
 
 const SignIn = () => {
     const dispatch = useDispatch();
+    const isLoadingAuth = useSelector(authSelector.isLoading)
 
-    const [loadingAuth, setLoadingAuth] = useState<boolean>(false);
-
-    const handleSubmit = async (form: any) => {
-        setLoadingAuth(true);
-        const res = await authProvider.signIn(form);
-        if (res?.error) return [
-            sweetAlert.toast("Error", res?.error?.message, "error"),
-            setLoadingAuth(false)
-        ];
-        router.push("/");
-        // dispatch(login({ auth: true }));
-        setLoadingAuth(false);
+    const handleSubmit = async (form: AuthLoginPayload) => {
+        dispatch(signIn(form, () => {
+            router.push("/");
+        }))
     };
 
     return (
@@ -45,7 +37,7 @@ const SignIn = () => {
                                         <Button
                                             bgClass={"warning"}
                                             type={"submit"}
-                                            loading={loadingAuth}
+                                            loading={!!isLoadingAuth}
                                             customClass="mt-3 w-100"
                                         >
                                             Log In

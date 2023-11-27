@@ -26,7 +26,6 @@ export const inputsDataStudent = ({ form }: EntriesDataI): InputPropsI[] => {
                 placeholder: "Ej. Castillo",
             }
         },
-        // birthday
         {
             title: "Matricula",
             cols: "col-lg-4",
@@ -38,8 +37,18 @@ export const inputsDataStudent = ({ form }: EntriesDataI): InputPropsI[] => {
             }
         },
         {
+            title: "Fecha de nacimiento",
+            cols: "col-lg-4",
+            props: {
+                type: "date",
+                name: "birthday",
+                value: form?.birthday,
+                placeholder: "Ej. 2018-01-01"
+            }
+        },
+        {
             title: "Nombre de la madre",
-            cols: "col-lg-6",
+            cols: "col-lg-4",
             props: {
                 type: "text",
                 name: "motherName",
@@ -49,7 +58,7 @@ export const inputsDataStudent = ({ form }: EntriesDataI): InputPropsI[] => {
         },
         {
             title: "Nombre del padre",
-            cols: "col-lg-6",
+            cols: "col-lg-4",
             props: {
                 type: "text",
                 name: "fatherName",
@@ -68,4 +77,28 @@ export const inputsDataStudent = ({ form }: EntriesDataI): InputPropsI[] => {
             }
         },
     ]
+}
+
+
+export const inputsHeadersStudentsRules = () => {
+    return {
+        name: {
+            isRequired: { message: "Requerido" },
+        },
+        lastName: {
+            isRequired: { message: "Requerido" },
+        },
+        studentCode: {
+            isRequired: { message: "Requerido" },
+        },
+        motherName: {
+            isRequired: { message: "Requerido" },
+        },
+        fatherName: {
+            isRequired: { message: "Requerido" },
+        },
+        address: {
+            isRequired: { message: "Requerido" },
+        },
+    }
 }

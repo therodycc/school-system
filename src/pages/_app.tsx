@@ -12,9 +12,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <UIProvider>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          {getLayout(<Component {...pageProps} />)}
-        </PersistGate>
+          <PersistGate loading={null} persistor={persistor}>
+            {getLayout(<Component {...pageProps} />)}
+          </PersistGate>
       </Provider>
     </UIProvider >
   )

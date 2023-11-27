@@ -1,14 +1,15 @@
 import config from "../../config"
+import { AuthLoginPayload } from "../../interfaces/auth/auth.interface"
 import Provider from "../provider"
 
 class AuthProvider extends Provider {
     constructor() {
         super({
-            baseURL: `${config.app.url}/auth`,
+            baseURL: `${config.app.url}/Auth`,
         })
     }
 
-    async signIn(data: { email: string, password: string }) {
+    async signIn(data: AuthLoginPayload) {
         return await this.post(`/sign-in`, data)
     }
 

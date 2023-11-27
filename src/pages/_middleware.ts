@@ -4,7 +4,7 @@ import config from '../config';
 const verifyAuthToRedirect = (req: NextRequest, ev: NextFetchEvent) => {
     return new Promise((resolve) => {
         ev.waitUntil((async () => {
-            fetch(`${config.app.url}/users/me`, {
+            fetch(`${config.app.url}/user/me`, {
                 method: 'GET',
                 headers: {
                     'Cookie': Object.keys(req.cookies)
@@ -15,21 +15,21 @@ const verifyAuthToRedirect = (req: NextRequest, ev: NextFetchEvent) => {
                 }
             })
                 .then(res => res.json())
-                .then(res => resolve(!res.error ? res : null))
+                .then(res => resolve(res))
                 .catch(() => resolve(null))
         })());
     })
 }
 
 export async function middleware(req: NextRequest, ev: NextFetchEvent) {
-    // let url = req.url;
-    // if (req.nextUrl.pathname.includes(".")) return NextResponse.next()
+    let url = req.url;
+    if (req.nextUrl.pathname.includes(".")) return NextResponse.next()
 
-    // const isPathAuth = url.includes('/auth')
-    // let account = await verifyAuthToRedirect(req, ev);
+    const isPathAuth = url.includes('/auth')
+    let account = await verifyAuthToRedirect(req, ev);
 
-    // if (account && isPathAuth) return NextResponse.redirect(new URL('/', req.url))
-    // if (!account && !isPathAuth) return NextResponse.redirect(new URL('/auth/sign-in', req.url))
+    if (account && isPathAuth) return NextResponse.redirect(new URL('/', req.url))
+    if (!account && !isPathAuth) return NextResponse.redirect(new URL('/auth/sign-in', req.url))
 
     return NextResponse.next();
 }

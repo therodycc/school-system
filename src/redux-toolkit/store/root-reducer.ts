@@ -6,6 +6,7 @@ import studentReducer from '../slices/student/students.slice';
 import teacherReducer from '../slices/teacher/teacher.slice';
 import subjectReducer from '../slices/subject/subject.slice';
 import classroomReducer from '../slices/classroom/classroom.slice';
+import authReducer from '../slices/auth/auth.slice';
 
 const createNoopStorage = () => ({
     getItem() {
@@ -28,13 +29,13 @@ const rootPersistConfig = {
     whitelist: []
 };
 
-
 const rootReducer = combineReducers({
     me: meReducer,
-    student:studentReducer,
-    teacher:teacherReducer,
-    subject:subjectReducer,
-    classroom:classroomReducer,
+    student: studentReducer,
+    teacher: teacherReducer,
+    subject: subjectReducer,
+    classroom: classroomReducer,
+    auth: authReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

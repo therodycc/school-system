@@ -35,9 +35,7 @@ export const AssignTeacherToClassroom = ({ active, toggle, data }: Props) => {
                     }}
                     inputsData={inputsDataTeacherToClassroom}
                     handleSubmit={handleSubmit}
-                    actions={{
-                        teachers
-                    }}
+                    actions={{ teachers }}
                     footerSection={
                         <>
                             <div className="col-lg-12">

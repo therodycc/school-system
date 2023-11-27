@@ -49,3 +49,22 @@ export const inputsDataTeacher = ({ form }: EntriesDataI): InputPropsI[] => {
         }
     ]
 }
+
+
+export const inputsHeadersTeacherRules = () => {
+    return {
+        name: {
+            isRequired: { message: "Requerido" },
+        },
+        lastName: {
+            isRequired: { message: "Requerido" },
+        },
+        profession: {
+            isRequired: { message: "Requerido" },
+        },
+        email: {
+            isRequired: { message: "Requerido" },
+            isEmailValid: { message: "Correo invalido" },
+        }
+    }
+}

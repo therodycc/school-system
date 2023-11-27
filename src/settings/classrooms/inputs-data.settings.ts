@@ -59,3 +59,19 @@ export const inputsDataTeacherToClassroom = ({ form, actions }: EntriesDataI): I
         },
     ]
 }
+
+
+export const inputsDataClassroomsRules = () => {
+    return {
+        name: {
+            isRequired: { message: "Requerido" },
+        },
+        capacity: {
+            minNumber: { message: "Requerido", value: 1 },
+            maxNumber: { message: "La cantidad maxima es 200", value: 200 },
+        },
+        location: {
+            isRequired: { message: "Requerido" },
+        },
+    }
+}

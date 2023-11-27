@@ -1,7 +1,7 @@
 import { ClassroomI } from "../../../../interfaces/classrooms/classrooms.interface";
 import { createClassroom, updateClassroom } from "../../../../redux-toolkit/slices/classroom/classroom.actions";
 import { useDispatch } from "../../../../redux-toolkit/store";
-import { inputsDataClassrooms } from "../../../../settings/classrooms/inputs-data.settings";
+import { inputsDataClassrooms, inputsDataClassroomsRules } from "../../../../settings/classrooms/inputs-data.settings";
 import Button from "../../../common/button";
 import Form from "../../../common/form";
 import Modal from "../../../common/modal";
@@ -33,6 +33,7 @@ export const ClassroomsModal = ({ active, setToggle: toggle, data }: Props) => {
                     keyForm="teachers"
                     inputsData={inputsDataClassrooms}
                     handleSubmit={handleSubmit}
+                    dataRules={inputsDataClassroomsRules}
                     initialState={data}
                     footerSection={
                         <>
